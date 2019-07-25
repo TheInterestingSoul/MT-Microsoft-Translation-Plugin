@@ -1,7 +1,6 @@
 # 微软翻译源码
 
 快来~git clone~给我star（滑稽）
-@LIN-JINBIN
 
 ## 说明
 根据[官方源码](https://github.com/L-JINBIN/MT-Translation-Plugin)修改，为了适配AIDE，将项目结构做了一点改动
