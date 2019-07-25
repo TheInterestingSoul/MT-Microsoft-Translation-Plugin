@@ -24,6 +24,6 @@ task pushPlugin(type: Exec, dependsOn: "buildPlugin") {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation fileTree(dir: 'libs-base', include: ['*.jar'])
+compile fileTree(dir: 'libs-base', include: ['*.jar'])
+compile fileTree(dir: 'libs', include: ['*.jar'])
 }
