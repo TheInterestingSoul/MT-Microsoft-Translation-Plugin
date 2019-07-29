@@ -12,7 +12,7 @@
 - plugin/src/main/resources
 - plugin/app/app/src/main/java
 - plugin/src/main/assets
-- plugin/libs
+- plugin/app/app/libs
 
 如果需要重新开发自己的插件，清空上面 4 个路径下的文件内容即可。
 
