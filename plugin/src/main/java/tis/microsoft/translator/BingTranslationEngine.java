@@ -47,7 +47,7 @@ public class BingTranslationEngine extends BaseTranslationEngine
         //设置项：清除空格
     }
 
-    private String getResult(String var1, String var2) throws JSONException, IOException
+    private String getResult(String var1, String var2)
     {
         SharedPreferences var3 = this.getContext().getPreferences();
         this.getContext().log("POST后返回Json：" + var1);// 打印日志，可在插件管理中查看
@@ -89,7 +89,7 @@ public class BingTranslationEngine extends BaseTranslationEngine
         return var1;
     }
 
-    private String post(String text, String from, String to) throws IOException, JSONException
+    private String post(String text, String from, String to) throws IOException 
     {
         FormBody var4 = 
         (new okhttp3.FormBody.Builder(Charset.defaultCharset()))
@@ -111,16 +111,16 @@ public class BingTranslationEngine extends BaseTranslationEngine
         
         this.getContext().log("翻译引擎：微软翻译");
         this.getContext().log("提交的翻译数据：" + text);
-        Response var5 = HTTP_CLIENT.newCall(var6).execute();
-        if (var5.isSuccessful())
-        {
-            return this.getResult(var5.body().string(), to);
-        }
-        else
-        {
-            this.getContext().log("错误：请求不成功");
-            throw new IOException(this.string.get("request_failed"));
-        }
+            Response var5 = HTTP_CLIENT.newCall(var6).execute();
+            if(var5.isSuccessful())
+            {
+                return this.getResult(var5.body().string(), to);
+            }
+            else
+            {
+                this.getContext().log("错误：请求不成功");
+            }
+        return null;
     }
 
     public final String getLanguageDisplayName(String var1)
@@ -183,23 +183,8 @@ public class BingTranslationEngine extends BaseTranslationEngine
 
         this.getContext().log("原语言代码:" + source_lang);
         this.getContext().log("翻译语言代码:" + target_lang);
-
-        try
-        {
             text = this.post(text, source_lang, target_lang);
             return text;
-        }
-        catch (JSONException var5)
-        {
-            this.getContext().log("错误：JSONException e");
-            throw new IOException(this.string.get("json_failed"));
-        }
-        catch (IOException var6)
-        {
-            this.getContext().log("错误：IOException e");
-            throw new IOException(this.string.get("io_failed"));
-        }
     }
-
 }
 
