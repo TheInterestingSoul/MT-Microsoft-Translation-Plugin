@@ -1,16 +1,19 @@
-plugin_name: Translation Plugin
-plugin_description: MT official translation plugin. Including Google, Baidu and Yandex translator.
-
-gtw: Google Translator (Web)
-btw: Baidu Translator (Web)
-bt: Baidu Translator
-yt: Yandex Translator
-
-reg_url: Registration URL
-
-bt_appid_summary: Baidu translation open platform APP ID
-bt_key_summary: Baidu translation open platform SecurityKey
-bt_reg_url_summary: The built-in APP ID and Key may exceed the free quota. It is recommended to apply for it yourself: https://api.fanyi.baidu.com
-
-yt_key_summary: Yandex translate API key
-yt_reg_url_summary: The built-in API key may exceed the free quota. It is recommended to apply for it yourself: https://tech.yandex.com/translate
+mtp_name: Microsoft Translator
+description: Specify the translation engine as "Microsoft translator" in translation mode to use the translation function.
+about: About
+author: Author
+author_descr: The Interesting Soul
+qq: QQ
+qq_descr: 1974224207 (Click to add me)
+email: E-mail
+email_descr: wangpy01@outlook.com
+mtbbs: MTBBS
+mtbbs_descr: bbs.binmt.cc (Click to visit)
+donate: Donate
+wechatpay: WeChat Pay
+wechatpay_descr: Support me by donating!
+settings: Settings
+translate_failed: Translation failed\nIf this problem still occurs after multiple retries, contact me (wangpy01@outlook.com) for assistance.\nError code:
+request_failed: Error: Request not successful\nMake sure you have a network connection. If this problem still occurs, please contact me (wangpy01@outlook.com) for assistance.
+io_failed: Error：IOException e\nMake sure you have a stable and fast network connection. DO NOT switch the network during translation!!!! If this problem still occurs, please contact me (wangpy01@outlook.com) for assistance.
+json_failed: Error：JSONException e\nIf this problem still occurs after multiple retries, contact me (wangpy01@outlook.com) for assistance.

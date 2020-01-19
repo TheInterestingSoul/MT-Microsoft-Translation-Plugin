@@ -1,8 +1,8 @@
 { 
 pluginSdkVersion: 2,
 pluginID: "tis.microsoft.translator",
-versionCode: 1,
-versionName: "Beta",
+versionCode: 5,
+versionName: "v1.4",
 name: "{mtp_name}",
 description: "{description}",
 mainPreference: "tis.microsoft.translator.Preference",

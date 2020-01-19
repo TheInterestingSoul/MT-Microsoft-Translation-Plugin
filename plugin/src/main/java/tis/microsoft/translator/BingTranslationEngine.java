@@ -12,8 +12,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.OkHttpClient.Builder;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.json.JSONException;
-import org.json.JSONObject;
 import android.support.annotation.MainThread;
 import org.json.JSONArray;
 import com.google.gson.*;
@@ -73,7 +71,7 @@ public class BingTranslationEngine extends BaseTranslationEngine
          ]
         */
         JsonParser jsonParser = new JsonParser();
-        JsonArray ay = jsonParser.parse(var1).getAsJsonArray();
+        JsonArray ay = (JsonArray) jsonParser.parse(var1);
         //把整个Json转为JsonArray（最外层方括号）
         JsonObject ay2 = ay.get(0).getAsJsonObject();
         //解析最外层花括号
@@ -102,12 +100,11 @@ public class BingTranslationEngine extends BaseTranslationEngine
         
         Request var6 = 
         (new okhttp3.Request.Builder())
-        .url("https://cn.bing.com/ttranslatev3")
-        .header("User-Agent", "Mozilla/5.0 (Linux; Android 6.0;)")
+        .url("http://cn.bing.com/ttranslatev3")
         .post(var4)
         .build();
         /*
-         地址：https://cn.bing.com/ttranslatev3
+         地址：http://cn.bing.com/ttranslatev3
          方法：POST
          参数：fromLang=auto-detect&text=测试文本&to=en
         */
@@ -135,14 +132,8 @@ public class BingTranslationEngine extends BaseTranslationEngine
     public List loadSourceLanguages()//源语言列表
     {
         SharedPreferences sp1 = this.getContext().getPreferences();
-        if (sp1.getBoolean("ca", false))
-        {
-            return Arrays.asList("en", "ar", "cs", "da", "de", "el", "es", "fi", "fr", "hr", "id", "is", "it", "ja", "ko", "la", "ms", "pt", "ru", "sv", "th", "uk", "vi", "zh-CN", "zh-TW");
-        }
-        else
         {
             return Arrays.asList("auto", "en", "ar", "cs", "da", "de", "el", "es", "fi", "fr", "hr", "id", "is", "it", "ja", "ko", "la", "ms", "pt", "ru", "sv", "th", "uk", "vi", "zh-CN", "zh-TW");
-            //设置项：隐藏自动检测
         }
     }
 
@@ -161,47 +152,41 @@ public class BingTranslationEngine extends BaseTranslationEngine
     @Override
     public String translate(String text, String source_lang, String target_lang) throws IOException
     {
-        String var4;
-        label28:
+        if (source_lang.equals("auto"))
         {
-            var4 = source_lang;
-            if (target_lang.equals("auto"))
-            {
-                var4 = detect_lang(text);
-            }
-            if (!target_lang.equals("zh-CN"))
-            {
-                source_lang = target_lang;
-                if (!target_lang.equals("zh"))
-                {
-                    break label28;           }
-            }
-
+            source_lang = "auto-detect";
+        }
+        if (source_lang.equals("zh-CN") || source_lang.equals("zh"))
+        {
             source_lang = "zh-Hans";
         }
 
-        if (var4.equals("zh-CN") || source_lang.equals("zh"))
+        if (source_lang.equals("zh-TW"))
         {
-            var4 = "zh-Hans";
+            source_lang = "zh-Hant";
+        }
+        if (target_lang.equals("zh-CN") || target_lang.equals("zh"))
+        {
+            target_lang = "zh-Hans";
         }
 
-        if (var4.equals("zh-TW"))
+        if (source_lang.equals("zh-TW"))
         {
-            var4 = "zh-Hant";
+            target_lang = "zh-Hant";
         }
         /*
         微软翻译的语言映射与MT有所出入
         简体：zh-Hans
         繁体：zh-Hant
-        自动检测：auto-detect（方法"detect_lang"）
+        自动检测：auto-detect
         */
 
-        this.getContext().log("原语言代码:" + var4);
-        this.getContext().log("翻译语言代码:" + source_lang);
+        this.getContext().log("原语言代码:" + source_lang);
+        this.getContext().log("翻译语言代码:" + target_lang);
 
         try
         {
-            text = this.post(text, var4, source_lang);
+            text = this.post(text, source_lang, target_lang);
             return text;
         }
         catch (JSONException var5)
@@ -216,9 +201,5 @@ public class BingTranslationEngine extends BaseTranslationEngine
         }
     }
 
-    private String detect_lang(String text) throws IOException 
-    {
-        return "auto-detect";
-    }
 }
 

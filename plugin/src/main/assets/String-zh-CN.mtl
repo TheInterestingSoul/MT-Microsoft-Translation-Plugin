@@ -1,16 +1,21 @@
-plugin_name: 翻译插件
-plugin_description: MT官方翻译插件，包含谷歌翻译、百度翻译、Yandex翻译。
-
-gtw: 谷歌翻译 (Web)
-btw: 百度翻译 (Web)
-bt: 百度翻译
-yt: Yandex 翻译
-
-reg_url: 申请地址
-
-bt_appid_summary: 百度翻译开放平台的 APP ID
-bt_key_summary: 百度翻译开放平台的密钥
-bt_reg_url_summary: 内置的 APP ID 和 Key 可能会超出免费额度，建议自己申请：https://api.fanyi.baidu.com
-
-yt_key_summary: Yandex 开放平台的 API Key
-yt_reg_url_summary: 内置的 API Key 可能会超出免费额度，建议自己申请：https://tech.yandex.com/translate
+mtp_name: 微软翻译
+description: 调用微软网页翻译接口
+about: 关于
+author: 作者
+author_descr: The Interesting Soul（有趣的灵魂）
+qq: QQ
+qq_descr: 1974224207（点击添加）
+email: 邮箱
+email_descr: wangpy01@outlook.com
+mtbbs: MT论坛
+donate: 捐赠
+wechatpay: 微信支付
+wechatpay_descr: 救救我这个大水比
+settings: 设置
+cs: 自动清除空格
+cs_descr: 当目标语言为中文（无论简繁体）时，自动清除结果中的空格
+mtbbs_descr: bbs.binmt.cc（点击进入）
+translate_failed: 翻译失败\n如果多次重试后问题仍然发生，MT论坛搜索用户“有趣的灵魂”反馈\n翻译引擎错误代码:
+request_failed: 错误：请求失败\n请确保网络通畅，如果仍然出现此问题，MT论坛搜索用户“有趣的灵魂”反馈
+io_failed: 错误：IOException e\n翻译时请保持网络通畅，\n最忌切换网络！！\n如此问题仍然复现，MT论坛搜索用户“有趣的灵魂”反馈
+json_failed: 错误：JSONExpection e\n如果多次重试后问题仍然发生，MT论坛搜索用户“有趣的灵魂”反馈
